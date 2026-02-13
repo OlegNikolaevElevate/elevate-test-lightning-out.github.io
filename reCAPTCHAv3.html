@@ -9,9 +9,12 @@
                 var reCAPTCHA_site_key = "6Lc4UWosAAAAAJ4lBbU7otrj0P4Dcp_3WDo-D_1w";
                 grecaptcha.execute(reCAPTCHA_site_key, {action: 'submit'}).then(function(token) {
                     recaptchaResponse.value = token;
+                    console.log(token);
                     if (token == "") {
+                        console.log("NOK");
                         parent.postMessage({ action: "getCAPTCHA", callCAPTCHAResponse : "NOK"}, "*");
                     } else {
+                        console.log("OK");
                         parent.postMessage({ action: "getCAPTCHA", callCAPTCHAResponse : token}, "*");
                     }
                 });
