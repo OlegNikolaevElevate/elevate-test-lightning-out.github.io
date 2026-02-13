@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Form</title>
+    <!-- This includes the Lightning Out library from the Salesforce org -->
+    <script src="https://d2s--willdev.sandbox.my.site.com/portal/lightning/lightning.out.js"></script>
+    <style>
+        /* Optional styling for the container */
+        .donation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for the donation form -->
+    <div class="donation-container">
+        <div id="donationFormContainer"></div>
+    </div>
+
+    <script>
+        // Initialize Lightning Out
+        document.addEventListener('DOMContentLoaded', function() {
+            // The experience cloud site (updated to production URL)
+            const communityUrl = 'https://d2s--willdev.sandbox.my.site.com/portal';
+            
+            $Lightning.use(
+                "c:DonationApp", 
+                function() {
+                   
+                    $Lightning.createComponent(
+                        "c:finDockDonationForm", 
+                        {
+                            // Component attributes
+                            formTitle: "Make a Donation",
+                            suggestedAmounts: "25,50,100",
+                            defaultDonationType: "oneTime",
+                            allowRecurring: true,
+                            allowWalletPayments: false,
+                            showAddFeeCheckbox: false,
+                            processingFeePercentage: 3,
+                            successPageUrl: "https://d2s.my.site.com/portal/s/donation-thank-you",
+                            failurePageUrl: "https://www.dare2share.org/donate",
+                            campaignId: "7011U000000QENCQA4",
+                            configurationName: "Default",
+                            currency: "USD",
+                            isProd: true
+                        },
+                        "donationFormContainer", 
+                        function(cmp) {
+                            console.log("FinDock Donation Form loaded successfully");
+                        }
+                    );
+                },
+                communityUrl 
+            );
+        });
+    </script>
+    <div id="donationFormContainer"></div>
+</body>
+</html>
