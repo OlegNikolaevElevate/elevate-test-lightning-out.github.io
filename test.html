@@ -27,7 +27,7 @@
     <script>
         // Initialize Lightning Out
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOMContentLoaded5');
+            console.log('DOMContentLoaded6');
             // The experience cloud site (updated to production URL)
             const communityUrl = 'https://d2s--willdev.sandbox.my.site.com/portal';
             // const communityUrl = 'https://olegnikolaevelevate.github.io';
@@ -60,9 +60,9 @@
                             grecaptcha.ready(function() {
                                     grecaptcha.execute("6Lc4UWosAAAAAJ4lBbU7otrj0P4Dcp_3WDo-D_1w", {action: 'submit'}).then(function(token) {
                                         if (token == "") {
-                                            parent.postMessage({ action: "getCAPTCHA", callCAPTCHAResponse : "NOK"});
+                                            parent.postMessage({ action: "getCAPTCHA", callCAPTCHAResponse : "NOK"}, "test.com");
                                         } else {
-                                            parent.postMessage({ action: "getCAPTCHA", callCAPTCHAResponse : token});
+                                            parent.postMessage({ action: "getCAPTCHA", callCAPTCHAResponse : token}, "test.com");
                                         }
                                     });
                                 })
