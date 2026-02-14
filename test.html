@@ -28,7 +28,6 @@
                 var reCAPTCHA_site_key = "6Lc4UWosAAAAAJ4lBbU7otrj0P4Dcp_3WDo-D_1w";
                 grecaptcha.execute(reCAPTCHA_site_key, {action: 'submit'}).then(function(token) {
                     console.log('recaptcha github', token);
-                    recaptchaResponse.value = token;
                     if (token == "") {
                         parent.postMessage({ action: "getCAPTCHA", callCAPTCHAResponse : "NOK"}, "*");
                     } else {
